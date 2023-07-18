@@ -141,7 +141,7 @@ void rst::rasterizer::rasterize_triangle(const Triangle& t) {
                     z = fmin(z_interpolated, z);
                 }
             }
-            if (cnt != 0) {
+            if (cnt != 0 && depth_buf[get_index(x, y)] > z) {
                 depth_buf[get_index(x, y)] = z;
                 set_pixel({x, y, z}, t.getColor() * cnt / 4.0f);
             }
